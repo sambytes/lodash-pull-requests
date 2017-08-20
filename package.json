@@ -1,0 +1,15 @@
+{
+  "name": "redox-project",
+  "version": "1.0.0",
+  "description": "Script to return info on lodash pull requests.",
+  "main": "lodash-pull-requests.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node scripts/lodash-pull-requests.js"
+  },
+  "author": "Sam Menza",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}
