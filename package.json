@@ -1,5 +1,5 @@
 {
-  "name": "redox-project",
+  "name": "lodash-pull-requests",
   "version": "1.0.0",
   "description": "Script to return info on lodash pull requests.",
   "main": "lodash-pull-requests.js",
