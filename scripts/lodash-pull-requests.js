@@ -22,7 +22,6 @@ var requestPullData = function retrievePullData() {
         request(requestConfig, (error, response, body) => {
             if(!error && response.statusCode === 200) {
                 var data = JSON.parse(body);
-                console.log('return data array length',data.length);
                 resolve(data);
             } else {
                 reject(error);
@@ -34,16 +33,11 @@ var requestPullData = function retrievePullData() {
 var returnPullData = async function pullData() {
     try {
         var data = await requestPullData();
+        console.log('Lodash Pull Data, first 40 requests', data);
         return data;
     } catch(error) {
         console.error(error, 'Error retrieving lodash pull data');
     }
 }
-
-var lodashPullData = returnPullData();
-
-urlConfig.perPage = '100';
-
-requestConfig.uri = `${baseUrl}${'?state='}${urlConfig.state}${'&page='}${urlConfig.page}${'&per_page='}${urlConfig.perPage}`;
 
 var lodashPullData = returnPullData();
