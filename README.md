@@ -26,7 +26,7 @@ npm start
 
 or
 ```
-node lodash-pull-requests.js
+node scripts/lodash-pull-requests.js
 ```
 
 The console output will show info from the top 40 recently created pull requests.  The data is sorted from most recently created to least.
