@@ -50,7 +50,6 @@ var returnPullData = async function pullData() {
 }
 
 var returnAllPullData = function getAllLodashData() {
-
     var data = [],
         returnedData = [],
         index = 1;
