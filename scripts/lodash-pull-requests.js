@@ -4,8 +4,8 @@ var baseUrl ='https://api.github.com/repos/lodash/lodash/pulls';
 
 var urlConfig = {
     state: 'all',
-    page: '1',
-    perPage: '40',
+    page: '9',
+    perPage: '100',
 }
 
 var requestConfig = {
@@ -15,6 +15,10 @@ var requestConfig = {
         'accept': 'application/vnd.github.v3+json',
         'User-Agent': 'sambytes',
     }
+}
+
+var setRequestConfigUri = function setRequestConfigUri(page, perPage) {
+    requestConfig.uri =`${baseUrl}${'?state='}${urlConfig.state}${'&page='}${page}${'&per_page='}${perPage}`
 }
 
 var requestPullData = function retrievePullData() {
@@ -33,11 +37,13 @@ var requestPullData = function retrievePullData() {
 var returnPullData = async function pullData() {
     try {
         var data = await requestPullData();
-        console.log('Lodash Pull Data, first 40 requests', data);
+        console.log('Lodash Pull Data, requests', data.length);
         return data;
     } catch(error) {
         console.error(error, 'Error retrieving lodash pull data');
     }
 }
+
+setRequestConfigUri(2,30);
 
 var lodashPullData = returnPullData();
