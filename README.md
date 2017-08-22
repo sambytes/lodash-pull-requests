@@ -1,6 +1,6 @@
-## Script for returning lodash pull requests
+## Script for returning all lodash pull requests
 
-A simple script to return lodash pull request information using the github v3 REST api.
+A simple script to return all lodash pull request information using the github v3 REST api.
 
 ### Initialization
 
@@ -29,5 +29,5 @@ or
 node scripts/lodash-pull-requests.js
 ```
 
-The console output will show info from the top 40 recently created pull requests.  The data is sorted from most recently created to least.
+The console output will list all lodash pull requests.  The data is sorted from most recently created to least.
 

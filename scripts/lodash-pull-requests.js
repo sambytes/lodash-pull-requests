@@ -69,8 +69,8 @@ var returnAllPullData = function getAllLodashData() {
             }
         },
         function() {
-            // console.log('All lodash pull data:', data);
-            console.log('Lodash data length:', data.length);
+            console.log('All lodash pull data:', data);
+            console.log('Lodash data array length:', data.length);
         }
     )
     return data;
