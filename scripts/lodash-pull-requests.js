@@ -43,7 +43,7 @@ var requestPullData = function retrievePullData() {
 var returnPullData = async function pullData() {
     try {
         var data = await requestPullData();
-        console.log('Lodash Pull Data, first 40 requests', data.length);
+        console.log('Lodash Pull Data:', data.length);
         return data;
     } catch(error) {
         console.error(error, 'Error retrieving lodash pull data');
@@ -67,11 +67,12 @@ var returnAllPullData = function getAllLodashData(that) {
         console.log('function')
     };
     whilst(
-        function() { return index < 3; },
+        function() { return (index === 1 || returnedData.length === 100) },
         async function(callback) {
             try {
-                await
-                returnPullData();
+                setRequestConfigUri(index, maxPagination);
+                returnedData = await returnPullData();
+                data = data.concat(returnedData);
                 index++;
             } catch(err) {
                 console.log('error', err);
@@ -79,6 +80,8 @@ var returnAllPullData = function getAllLodashData(that) {
         },
         function() {
             console.log('finished');
+            console.log('return data 7', data[700]);
+            console.log('return data 8', data[800]);
         }
     )
     return data;
