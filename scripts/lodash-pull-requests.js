@@ -43,29 +43,19 @@ var requestPullData = function retrievePullData() {
 var returnPullData = async function pullData() {
     try {
         var data = await requestPullData();
-        console.log('Lodash Pull Data:', data.length);
         return data;
     } catch(error) {
         console.error(error, 'Error retrieving lodash pull data');
     }
 }
 
-function getNextData(index) {
-    // setRequestConfigUri(index, maxPagination);
-    // returnedData = returnPullData();
-    // index++;
-    console.log('callback');
-}
-
-var returnAllPullData = function getAllLodashData(that) {
+var returnAllPullData = function getAllLodashData() {
 
     var data = [],
         returnedData = [],
         index = 1;
 
-    var callback = function() {
-        console.log('function')
-    };
+    // Whilst from async module to make async while loop calls
     whilst(
         function() { return (index === 1 || returnedData.length === 100) },
         async function(callback) {
@@ -75,18 +65,15 @@ var returnAllPullData = function getAllLodashData(that) {
                 data = data.concat(returnedData);
                 index++;
             } catch(err) {
-                console.log('error', err);
+                console.log('Error retrieving lodash pull data', err);
             }
         },
         function() {
-            console.log('finished');
-            console.log('return data 7', data[700]);
-            console.log('return data 8', data[800]);
+            // console.log('All lodash pull data:', data);
+            console.log('Lodash data length:', data.length);
         }
     )
     return data;
 }
-var that = this;
 
-// var lodashData = returnPullData();
-var lodashPullData = returnAllPullData(that);
+var lodashPullData = returnAllPullData();
