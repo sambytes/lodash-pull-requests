@@ -57,7 +57,7 @@ var returnAllPullData = function getAllLodashData() {
 
     // Whilst from async module to make async while loop calls
     whilst(
-        function() { return (index === 1 || returnedData.length === 100) },
+        function() { return (index === 1 || returnedData.length === maxPagination) },
         async function(callback) {
             try {
                 setRequestConfigUri(index, maxPagination);
