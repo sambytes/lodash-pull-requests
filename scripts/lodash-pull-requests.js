@@ -50,29 +50,35 @@ var returnPullData = async function pullData() {
 }
 
 var returnAllPullData = function getAllLodashData() {
-    var data = [],
-        returnedData = [],
-        index = 1;
+    return new Promise((resolve, reject) => {
+        var data = [],
+            returnedData = [],
+            index = 1;
 
-    // Whilst from async module to make async while loop calls
-    whilst(
-        function() { return (index === 1 || returnedData.length === maxPagination) },
-        async function(callback) {
-            try {
-                setRequestConfigUri(index, maxPagination);
-                returnedData = await returnPullData();
-                data = data.concat(returnedData);
-                index++;
-            } catch(err) {
-                console.log('Error retrieving lodash pull data', err);
+        // Whilst from async module to make async while loop calls
+        whilst(
+            function() { return (index === 1 || returnedData.length === maxPagination) },
+            async function(callback) {
+                try {
+                    setRequestConfigUri(index, maxPagination);
+                    returnedData = await returnPullData();
+                    data = data.concat(returnedData);
+                    index++;
+                } catch(err) {
+                    console.log('Error retrieving lodash pull data', err);
+                    reject(error);
+                }
+            },
+            function() {
+                resolve(data);
             }
-        },
-        function() {
-            console.log('All lodash pull data:', data);
-            console.log('Lodash data array length:', data.length);
-        }
-    )
-    return data;
+        )
+    })
 }
 
-var lodashPullData = returnAllPullData();
+returnAllPullData().then((data) => {
+    console.log('All lodash pull data:', data);
+    console.log('Lodash data array length:', data.length);
+}, (error) => {
+    console.log('Error', error);
+});
