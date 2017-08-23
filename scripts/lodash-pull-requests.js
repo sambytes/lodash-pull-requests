@@ -65,7 +65,7 @@ var returnAllPullData = function getAllLodashData() {
                     data = data.concat(returnedData);
                     index++;
                 } catch(err) {
-                    console.log('Error retrieving lodash pull data', err);
+                    console.error('Error retrieving lodash pull data', err);
                     reject(error);
                 }
             },
@@ -80,5 +80,5 @@ returnAllPullData().then((data) => {
     console.log('All lodash pull data:', data);
     console.log('Lodash data array length:', data.length);
 }, (error) => {
-    console.log('Error', error);
+    console.error('Error', error);
 });
