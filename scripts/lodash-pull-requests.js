@@ -45,7 +45,7 @@ var returnPullData = async function pullData() {
         var data = await requestPullData();
         return data;
     } catch(error) {
-        console.error(error, 'Error retrieving lodash pull data');
+        console.error('Error retrieving lodash pull data', error);
     }
 }
 
